@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Français Master — Lexique</title>
+  <style>
+    :root {
+      --primary: #667eea; --secondary: #764ba2;
+      --bg-light: #f8fafc; --text-dark: #2d3748;
+      --text-muted: #718096; --border-light: #e2e8f0;
+      --shadow: 0 10px 30px rgba(0,0,0,.15);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:linear-gradient(135deg,var(--primary),var(--secondary)); min-height:100vh; padding:20px; font-family:"Segoe UI",system-ui,sans-serif; }
+
+    /* ── CARTE PRINCIPALE ── */
+    .card { max-width:1000px; margin:0 auto; background:white; border-radius:24px; padding:30px 24px; box-shadow:0 20px 60px rgba(0,0,0,.25); }
+
+    /* ── TITRE ── */
+    h1 { font-size:2em; font-weight:800; background:linear-gradient(135deg,var(--primary),var(--secondary)); -webkit-background-clip:text; background-clip:text; color:transparent; margin-bottom:6px; text-align:center; }
+    .tagline { text-align:center; color:var(--text-muted); margin-bottom:22px; font-size:.9em; }
+
+    /* ── NAV ── */
+    .nav-links { display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-bottom:22px; }
+    .btn { display:inline-block; background:#f0f4ff; color:var(--primary); padding:8px 18px; border-radius:40px; font-weight:700; text-decoration:none; transition:all .2s; font-size:.88em; border:none; cursor:pointer; white-space:nowrap; }
+    .btn-primary { background:linear-gradient(135deg,var(--primary),var(--secondary)); color:white; }
+    .btn:hover { transform:translateY(-2px); box-shadow:0 4px 12px rgba(102,126,234,.3); }
+
+    /* ── BARRE RECHERCHE ── */
+    .search-area { display:flex; align-items:center; gap:10px; margin-bottom:18px; background:#f8fafc; border-radius:16px; padding:12px 16px; border:2px solid var(--border-light); }
+    .flags { display:flex; gap:6px; flex-shrink:0; }
+    .flag { font-size:1.6em; cursor:pointer; opacity:.45; border-radius:50%; padding:3px; transition:all .2s; }
+    .flag.active { opacity:1; box-shadow:0 0 0 2px var(--primary); background:rgba(102,126,234,.12); }
+    .search-input { flex:1; padding:8px 14px; border:2px solid var(--border-light); border-radius:30px; font-size:.92em; background:white; outline:none; min-width:0; }
+    .search-input:focus { border-color:var(--primary); }
+    .search-btn { padding:9px 18px; border:none; border-radius:30px; background:linear-gradient(135deg,var(--primary),var(--secondary)); color:white; font-weight:700; font-size:.85em; cursor:pointer; white-space:nowrap; flex-shrink:0; }
+
+    /* ── BOUTONS FILTRE ── */
+    .filter-triggers { display:flex; gap:10px; justify-content:center; margin-bottom:16px; }
+    .filter-trigger { background:#f0f4ff; color:var(--primary); padding:9px 22px; border-radius:40px; font-weight:700; font-size:.88em; cursor:pointer; border:2px solid transparent; transition:all .2s; }
+    .filter-trigger.active { background:linear-gradient(135deg,var(--primary),var(--secondary)); color:white; box-shadow:0 4px 12px rgba(102,126,234,.3); }
+
+    /* ── PANNEAU FILTRES ── */
+    .filters-panel { background:#f8fafc; border-radius:16px; padding:14px 16px; margin-bottom:16px; border:1px solid var(--border-light); }
+    .filters-panel.visible { }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:translateY(0)} }
+    .chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:4px; }
+    .chip { background:white; border:2px solid var(--border-light); border-radius:30px; padding:6px 14px; font-size:.82em; font-weight:600; cursor:pointer; transition:all .2s; color:var(--text-dark); }
+    .chip:hover { border-color:var(--primary); color:var(--primary); }
+    .chip.active { background:linear-gradient(135deg,var(--primary),var(--secondary)); color:white; border-color:transparent; }
+
+    /* ── COMPTEUR ── */
+    .result-count { text-align:right; font-size:.75em; color:var(--text-muted); margin-bottom:10px; }
+
+    /* ── GRILLE CARTES ── */
+    .lexique-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px; }
+    .word-card { background:var(--bg-light); border-left:4px solid var(--primary); border-radius:14px; padding:15px; transition:all .2s; }
+    .word-card:hover { transform:translateY(-3px); box-shadow:0 8px 20px rgba(102,126,234,.15); border-left-color:var(--secondary); }
+    .main-word { font-size:1.25em; font-weight:800; color:var(--text-dark); margin-bottom:3px; }
+    .phonetic { font-style:italic; color:var(--secondary); font-size:.78em; margin-left:6px; }
+    .translation { font-size:.9em; color:#4a5568; margin:4px 0 8px; }
+    .definition { font-size:.78em; color:var(--text-muted); line-height:1.5; border-top:1px solid var(--border-light); padding-top:7px; margin-top:5px; }
+    .badge-container { margin-top:10px; display:flex; flex-wrap:wrap; gap:6px; }
+    .badge-level { background:linear-gradient(135deg,var(--primary),var(--secondary)); color:white; border-radius:20px; padding:2px 9px; font-size:.65em; font-weight:700; }
+    .badge-cat { background:#e9d8fd; color:#553c9a; border-radius:20px; padding:2px 9px; font-size:.65em; font-weight:600; }
+    .no-result { text-align:center; padding:40px; color:var(--text-muted); background:#f9fafb; border-radius:20px; font-size:.95em; }
+    .ex-toggle{background:none;border:1px solid #e2e8f0;border-radius:8px;padding:1px 6px;font-size:.78em;cursor:pointer;margin-left:6px;vertical-align:middle;transition:all .2s}
+    .ex-toggle:hover{background:#f0f4ff;border-color:var(--primary)}
+    .ex-en{display:none;font-style:italic;color:#48bb78;font-size:.78em;margin-top:4px}
+    .word-ex{font-size:.78em;color:var(--text-muted);margin-top:6px}
+    .word-lit{font-size:.7em;color:#a0aec0;margin-top:3px;font-style:italic}
+
+    @media(max-width:640px) {
+      body { padding:12px; }
+      .card { padding:20px 14px; }
+      h1 { font-size:1.6em; }
+      .search-area { flex-wrap:wrap; }
+      .flags { width:100%; justify-content:center; }
+      .lexique-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="card">
+  <h1>📖 Lexique Français Master 🥖</h1>
+  <div class="tagline">Recherchez un mot • Filtrez par niveau ou thème • 🇫🇷⇆🇬🇧</div>
+
+  <div class="nav-links">
+    <a href="index.html" class="btn">🏠 Accueil</a>
+    <a href="quiz.html" class="btn btn-primary">🎮 Quiz</a>
+    <a href="dashboard.html" class="btn">📊 Mon espace</a>
+    <a href="quiz.html?section=lecons" class="btn" style="background:#fff5d6;color:#744210">📚 Leçons</a>
+  </div>
+
+  <div class="search-area">
+    <div class="flags" id="flagsContainer">
+      <div class="flag" data-sense="fren" title="Français → English">🇫🇷</div>
+      <div class="flag" data-sense="enfr" title="English → Français">🇬🇧</div>
+    </div>
+    <input type="text" id="searchInput" class="search-input" placeholder="🔍 Entrez un mot…">
+    <button id="searchBtn" class="search-btn">🔎 Chercher</button>
+  </div>
+
+  <div class="filter-triggers">
+    <button id="showLevelsBtn" class="filter-trigger">📊 Niveaux</button>
+    <button id="showThemesBtn" class="filter-trigger">🏷️ Thèmes</button>
+  </div>
+
+  <div id="levelsPanel" class="filters-panel">
+    <div class="chips" id="levelChips"></div>
+  </div>
+  <div id="themesPanel" class="filters-panel">
+    <div class="chips" id="themeChips"></div>
+  </div>
+
+  <div class="result-count" id="resultCount"></div>
+  <div id="lexiqueGrid" class="lexique-grid"></div>
+</div>
+
+<script src="BDDlexique.js"></script>
+<script>
+  (function() {
+    let allWords = [];
+    let currentSense = "enfr";
+    let selectedLevel = null;
+    let selectedTheme = null;
+    let searchActive = false;
+    let currentSearchTerm = "";
+    let savedLevel = null;
+    let savedTheme = null;
+
+    const flags = document.querySelectorAll(".flag");
+    const searchInput = document.getElementById("searchInput");
+    const searchBtn = document.getElementById("searchBtn");
+    const showLevelsBtn = document.getElementById("showLevelsBtn");
+    const showThemesBtn = document.getElementById("showThemesBtn");
+    const levelsPanel = document.getElementById("levelsPanel");
+    const themesPanel = document.getElementById("themesPanel");
+    const levelChipsDiv = document.getElementById("levelChips");
+    const themeChipsDiv = document.getElementById("themeChips");
+    const resultCountSpan = document.getElementById("resultCount");
+    const gridDiv = document.getElementById("lexiqueGrid");
+
+    const themeIcons = {
+      "salutation":"👋","présentation":"🙋","politesse":"🎩","expression":"💬",
+      "quantité":"⚖️","commerce":"🏬","aliment":"🍎","nature":"🌿",
+      "outil":"🔧","verbe":"⚡","social":"👥","lieu":"🏠",
+      "sensation":"🌡️","sentiment":"❤️","objet":"📦","météo":"🌤️",
+      "temps":"⏰","saison":"🍂","état":"🔄","divers":"📌","admin":"🏛️","voiture":"🚗","poste":"📮","télécom":"📱","telecom":"📱","état":"🔄","etat":"🔄"
+    };
+
+    function loadData() {
+      if (typeof LEXIQUE_BDD !== "undefined" && Array.isArray(LEXIQUE_BDD) && LEXIQUE_BDD.length) {
+        allWords = [...LEXIQUE_BDD];
+        return true;
+      }
+      gridDiv.innerHTML = '<div class="no-result">❌ BDDlexique.js non chargé. Vérifie que le fichier est dans le même dossier.</div>';
+      return false;
+    }
+
+    function normalize(str) {
+      return str.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+    }
+
+    function getFilteredWords() {
+      let f = [...allWords];
+      if (selectedLevel && selectedLevel !== "all") f = f.filter(w => w.level.toString() === selectedLevel);
+      if (selectedTheme && selectedTheme !== "all") f = f.filter(w => w.cat === selectedTheme);
+      if (searchActive && currentSearchTerm.trim()) {
+        const t = normalize(currentSearchTerm);
+        f = f.filter(w => normalize(w.fr).includes(t) || normalize(w.en).includes(t));
+      }
+      return f;
+    }
+
+    function esc(s){ return s ? s.replace(/[&<>]/g, m => m==="&"?"&amp;":m==="<"?"&lt;":"&gt;") : ""; }
+
+    function renderWords(words) {
+      if (!words.length) {
+        gridDiv.innerHTML = '<div class="no-result">✨ Aucun mot trouvé pour ces critères.</div>';
+        resultCountSpan.textContent = "0 mot affiché";
+        return;
+      }
+      resultCountSpan.textContent = words.length + " mot" + (words.length>1?"s":"") + " affiché" + (words.length>1?"s":"");
+      const rev = currentSense === "enfr";
+      gridDiv.innerHTML = words.map(function(w) {
+        const icon = themeIcons[w.cat] || "🏷️";
+        const catLabel = w.cat ? w.cat.charAt(0).toUpperCase()+w.cat.slice(1) : "Général";
+        const hasExEn = w.ex_en && w.ex_en.trim();
+        const hasLit  = w.lit  && w.lit.trim();
+        const exBtn   = hasExEn ? "<button class=\"ex-toggle\" onclick=\"toggleEx(this)\" title=\"English example\">🇬🇧</button>" : "";
+        const exEnSpan= hasExEn ? "<span class=\"ex-en\">" + esc(w.ex_en) + "</span>" : "";
+        const litDiv  = hasLit  ? "<div class=\"word-lit\">💡 " + esc(w.lit) + "</div>" : "";
+        const badges  = "<div class=\"badge-container\"><span class=\"badge-level\">Niv." + w.level + "</span><span class=\"badge-cat\">" + icon + " " + catLabel + "</span></div>";
+        const defHtml = "<div class=\"definition\">" + esc(w.def||"") + "</div>";
+        const exHtml  = "<div class=\"word-ex\">" + esc(w.ex||"") + exBtn + exEnSpan + "</div>" + litDiv;
+        // Mode EN→FR : anglais apprend le français — EN en titre (grande police), FR en sous-titre
+        if (rev) {
+          return "<div class=\"word-card\">" +
+            "<div class=\"main-word\">" + esc(w.fr) + " <span class=\"phonetic\">" + esc(w.phon||"") + "</span></div>" +
+            "<div class=\"translation\" style=\"font-weight:600\">" + esc(w.en) + "</div>" +
+            defHtml + exHtml + badges + "</div>";
+        }
+        // Mode FR→EN : français apprend l'anglais — FR en titre, EN en sous-titre
+        return "<div class=\"word-card\">" +
+          "<div class=\"main-word\">" + esc(w.en) + "</div>" +
+          "<div class=\"translation\">" + esc(w.fr) + " <span class=\"phonetic\">" + esc(w.phon||"") + "</span></div>" +
+          defHtml + exHtml + badges + "</div>";
+      }).join("");
+    }
+
+    // Bouton toggle exemple EN ↔ masqué
+    function toggleEx(btn) {
+      var span = btn.nextElementSibling;
+      if (!span) return;
+      var visible = span.style.display === "block";
+      span.style.display = visible ? "none" : "block";
+      btn.textContent = visible ? "🇬🇧" : "🇫🇷";
+    }
+
+    function updateUI() {
+      document.querySelectorAll("#levelChips .chip").forEach(c => {
+        c.classList.toggle("active", c.dataset.level === (selectedLevel||"") || (c.dataset.level==="all" && selectedLevel==="all"));
+      });
+      document.querySelectorAll("#themeChips .chip").forEach(c => {
+        c.classList.toggle("active", c.dataset.theme === (selectedTheme||"") || (c.dataset.theme==="all" && selectedTheme==="all"));
+      });
+      flags.forEach(f => f.classList.toggle("active", f.dataset.sense === currentSense));
+      renderWords(getFilteredWords());
+    }
+
+    function buildLevelChips() {
+      ["all","1","2","3","4","5","6","7","8","9","10","11"].forEach(lvl => {
+        const c = document.createElement("div");
+        c.className = "chip"; c.dataset.level = lvl;
+        c.textContent = lvl === "all" ? "📚 Tous" : "Niveau "+lvl;
+        c.addEventListener("click", () => {
+          if (searchActive) return;
+          selectedLevel = selectedLevel === lvl ? null : lvl;
+          updateUI();
+        });
+        levelChipsDiv.appendChild(c);
+      });
+    }
+
+    function buildThemeChips() {
+      const themes = [...new Set(allWords.map(w=>w.cat).filter(Boolean))].sort();
+      const allC = document.createElement("div");
+      allC.className="chip"; allC.dataset.theme="all"; allC.textContent="🏷️ Tous";
+      allC.addEventListener("click",()=>{ if(searchActive)return; selectedTheme=selectedTheme==="all"?null:"all"; updateUI(); });
+      themeChipsDiv.appendChild(allC);
+      themes.forEach(t => {
+        const c = document.createElement("div");
+        c.className="chip"; c.dataset.theme=t;
+        c.textContent=(themeIcons[t]||"🏷️")+" "+t.charAt(0).toUpperCase()+t.slice(1);
+        c.addEventListener("click",()=>{ if(searchActive)return; selectedTheme=selectedTheme===t?null:t; updateUI(); });
+        themeChipsDiv.appendChild(c);
+      });
+    }
+
+    function showLevelsPanel(){
+      // Toggle : clic sur actif referme le panel
+      if(levelsPanel.style.display==="block"){
+        levelsPanel.style.display="none"; showLevelsBtn.classList.remove("active"); return;
+      }
+      levelsPanel.style.display="block"; themesPanel.style.display="none";
+      showLevelsBtn.classList.add("active"); showThemesBtn.classList.remove("active");
+    }
+    function showThemesPanel(){
+      // Toggle : clic sur actif referme le panel
+      if(themesPanel.style.display==="block"){
+        themesPanel.style.display="none"; showThemesBtn.classList.remove("active"); return;
+      }
+      themesPanel.style.display="block"; levelsPanel.style.display="none";
+      showThemesBtn.classList.add("active"); showLevelsBtn.classList.remove("active");
+    }
+
+    function performSearch() {
+      const term = searchInput.value.trim();
+      if (!term) { resetSearch(); return; }
+      savedLevel=selectedLevel; savedTheme=selectedTheme;
+      searchActive=true; currentSearchTerm=term; selectedLevel=null; selectedTheme=null;
+      searchBtn.textContent="✕ Effacer";
+      levelsPanel.style.display="none"; themesPanel.style.display="none";
+      showLevelsBtn.classList.remove("active"); showThemesBtn.classList.remove("active");
+      updateUI();
+    }
+
+    function resetSearch() {
+      if (!searchActive) return;
+      searchActive=false; currentSearchTerm=""; searchInput.value="";
+      searchBtn.textContent="🔎 Chercher";
+      selectedLevel=savedLevel; selectedTheme=savedTheme;
+      // Restore panel
+      if(savedTheme){ showThemesPanel(); } else { showLevelsPanel(); }
+      updateUI();
+    }
+
+    function init() {
+      if (!loadData()) return;
+      buildLevelChips(); buildThemeChips();
+      showLevelsPanel(); updateUI();
+      showLevelsBtn.addEventListener("click", showLevelsPanel);
+      showThemesBtn.addEventListener("click", showThemesPanel);
+      searchBtn.addEventListener("click", ()=> searchActive ? resetSearch() : performSearch());
+      searchInput.addEventListener("keypress", e => { if(e.key==="Enter") searchActive ? resetSearch() : performSearch(); });
+      flags.forEach(f => f.addEventListener("click", ()=>{ currentSense=f.dataset.sense; updateUI(); }));
+      // URL param ?level=N
+      const lvlParam = new URLSearchParams(window.location.search).get("level");
+      if (lvlParam) { selectedLevel=lvlParam; showLevelsPanel(); updateUI(); }
+    }
+
+    document.addEventListener("DOMContentLoaded", init);
+  })();
+</script>
+</body>
+</html>
