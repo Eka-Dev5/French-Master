@@ -29,28 +29,36 @@ h1{font-size:2.2em;font-weight:800;background:linear-gradient(135deg,var(--prima
 <div class="card">
   <span class="emoji">🥖</span>
   <h1>Français Master</h1>
-  <p class="tagline">Apprenez le français du quotidien, un niveau à la fois.</p>
+  <p class="tagline">Learn everyday French, one level at a time.</p>
   <div class="pills">
-    <span class="pill">11 niveaux</span>
+    <span class="pill">11 levels</span>
     <span class="pill">220 questions</span>
-    <span class="pill">128 mots</span>
+    <span class="pill" id="wordCount">128 words</span>
     <span class="pill">30 badges</span>
   </div>
   <div class="features">
-    <div class="feature"><span class="feature-icon">📚</span>Leçons courtes avec prononciation intuitive</div>
-    <div class="feature"><span class="feature-icon">🔊</span>Phonétique *bon-ZHOOR* pour anglophones</div>
-    <div class="feature"><span class="feature-icon">🎯</span>QCM, réponses écrites ou les deux</div>
-    <div class="feature"><span class="feature-icon">📊</span>Espace personnel avec badges et fiches</div>
-    <div class="feature"><span class="feature-icon">🎭</span>Mode Caméléon : erreurs typiques anglophones</div>
-    <div class="feature"><span class="feature-icon">📖</span>Lexique 128 mots FR⇆EN avec phonétique</div>
+    <div class="feature"><span class="feature-icon">📚</span>Short lessons with intuitive pronunciation</div>
+    <div class="feature"><span class="feature-icon">🔊</span>Phonetics *bon-ZHOOR* for English speakers</div>
+    <div class="feature"><span class="feature-icon">🎯</span>Multiple choice, written answers or both</div>
+    <div class="feature"><span class="feature-icon">📊</span>Personal space with badges and revision cards</div>
+    <div class="feature"><span class="feature-icon">🎭</span>Caméléon mode: typical English speaker mistakes</div>
+    <div class="feature"><span class="feature-icon">📖</span>Vocabulary list FR⇆EN with phonetics</div>
   </div>
-  <a href="quiz.html" class="btn-play">🎮 Commencer maintenant</a>
+  <a href="quiz.html" class="btn-play">🎮 Start now</a>
   <div>
     <a href="dashboard.html" class="btn-sec">📊 Mon espace</a>
     <a href="lexique.html" class="btn-sec">📖 Lexique</a>
     <a href="quiz.html?section=lecons" class="btn-sec">📚 Leçons</a>
   </div>
-  <p class="footer">Conçu pour les anglophones vivant en France.<br>Fonctionne sur téléphone, tablette et ordinateur.</p>
+  <p class="footer">Designed for English speakers living in France.<br>Works on phone, tablet and computer.</p>
 </div>
+<script src="BDDlexique.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  if (typeof LEXIQUE_BDD !== "undefined") {
+    document.getElementById("wordCount").textContent = LEXIQUE_BDD.length + " words";
+  }
+});
+</script>
 </body>
 </html>

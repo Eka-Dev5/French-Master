@@ -80,8 +80,8 @@ h1{text-align:center;color:var(--primary);font-size:2.1em;margin-bottom:4px}
 </head>
 <body>
 <div class="container">
-<h1>📊 Mon Espace Français Master 🥖</h1>
-<div class="subtitle">Tous tes progrès, badges et révisions en un coup d'œil</div>
+<h1>📊 My Space — Français Master 🥖</h1>
+<div class="subtitle">All your progress, badges and revisions at a glance</div>
 
 <div class="player-header no-print">
   <select id="playerSelect" onchange="loadPlayer(this.value)"><option value="">-- Choisir un joueur --</option></select>
@@ -100,13 +100,13 @@ h1{text-align:center;color:var(--primary);font-size:2.1em;margin-bottom:4px}
 </div>
 
 <div class="nav-tabs">
-  <button class="tab-btn active" onclick="showTab('stats',this)">📈 Statistiques</button>
+  <button class="tab-btn active" onclick="showTab('stats',this)">📈 Statistics</button>
   <button class="tab-btn" onclick="showTab('badges',this)">🏅 Badges (<span id="badgeCount">0</span>/30)</button>
   <button class="tab-btn" onclick="showTab('cameleon',this)">🎭 Mode Caméléon</button>
-<button class="tab-btn" onclick="showTab('niveaux',this)">🎮 Mes Niveaux</button>
-<button class="tab-btn" onclick="showTab('fiches',this)">📝 Mes Fiches</button>
+<button class="tab-btn" onclick="showTab('niveaux',this)">🎮 My Levels</button>
+<button class="tab-btn" onclick="showTab('fiches',this)">📝 My Cards</button>
 
-<button class="tab-btn" onclick="showTab('historique',this)">📜 Historique</button>
+<button class="tab-btn" onclick="showTab('historique',this)">📜 History</button>
 
 </div>
 
@@ -119,14 +119,14 @@ h1{text-align:center;color:var(--primary);font-size:2.1em;margin-bottom:4px}
     <div class="stat-card"><span class="stat-num" id="statRate">0%</span><span class="stat-label">Précision</span></div>
   </div>
   <div class="level-progress">
-    <h3>📚 Progression par niveau</h3>
+    <h3>📚 Progress by level</h3>
     <div id="levelBars"></div>
   </div>
 </div>
 
 <!-- BADGES -->
 <div id="badges" class="tab-content">
-  <div class="no-print-info">Les badges se débloquent automatiquement selon ta progression dans le quiz.</div>
+  <div class="no-print-info">Badges unlock automatically as you progress in the quiz.</div>
   <div class="badges-grid" id="badgesGrid"></div>
 </div>
 
@@ -134,7 +134,7 @@ h1{text-align:center;color:var(--primary);font-size:2.1em;margin-bottom:4px}
 <div id="cameleon" class="tab-content">
   <div class="cam-box">
     <div class="cam-avatar">🦎</div>
-    <div class="cam-name">Mode Caméléon — Aide Lucas !</div>
+    <div class="cam-name">Caméléon Mode — Help Lucas!</div>
     <div id="cameleonContent"></div>
     <div class="cam-score" id="camScore"></div>
   </div>
@@ -150,7 +150,7 @@ h1{text-align:center;color:var(--primary);font-size:2.1em;margin-bottom:4px}
 
 <!-- NIVEAUX -->
 <div id="niveaux" class="tab-content">
-  <div class="no-print-info">Clique sur un niveau pour jouer.</div>
+  <div class="no-print-info">Click a level to play.</div>
   <div id="niveauxGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:10px"></div>
 </div>
 
@@ -197,7 +197,7 @@ const BADGES_DEF = [
   {id:23,icon:"🎓",name:"Diplômé",desc:"8 niveaux terminés",check:p=>(p.completed||[]).length>=8},
   {id:24,icon:"🦁",name:"Courageux",desc:"Rejouer après une erreur",check:p=>(p.totalQuestions||0)>=2},
   {id:25,icon:"🔁",name:"Persévérant",desc:"Revenir sur ses erreurs",check:p=>(p.errorHistory||[]).length>0},
-  {id:26,icon:"🎭",name:"Ami de Lucas",desc:"Aider Lucas 1 fois",check:p=>(p.cameleonHelped||0)>=1},
+  {id:26,icon:"🎭",name:"Ami de Lucas",desc:"Aider Lucas 1 times",check:p=>(p.cameleonHelped||0)>=1},
   {id:27,icon:"👨‍🏫",name:"Professeur",desc:"Aider Lucas 5 fois",check:p=>(p.cameleonHelped||0)>=5},
   {id:28,icon:"🧑‍🎓",name:"Maître",desc:"Aider Lucas 10 fois",check:p=>(p.cameleonHelped||0)>=10},
   {id:29,icon:"🌍",name:"Citoyen du monde",desc:"Tous les niveaux terminés",check:p=>(p.completed||[]).length>=10},
@@ -226,7 +226,7 @@ let currentCamOptions = [];
 
 function exportSave(){
   const players=getPlayers();
-  if(Object.keys(players).length===0){alert("Aucune sauvegarde à exporter.");return;}
+  if(Object.keys(players).length===0){alert("No save data to export.");return;}
   const blob=new Blob([JSON.stringify(players,null,2)],{type:"application/json"});
   const url=URL.createObjectURL(blob);
   const a=document.createElement("a");
@@ -245,9 +245,9 @@ function importSave(event){
       if(typeof data==="object"&&data!==null){
         savePlayers(data);
         loadPlayerList();
-        alert("Sauvegarde importée !");
-      } else alert("Fichier invalide.");
-    } catch(err){alert("Erreur : fichier non reconnu.");}
+        alert("Save imported!");
+      } else alert("Invalid file.");
+    } catch(err){alert("Error: unrecognised file.");}
   };
   reader.readAsText(file);
   event.target.value="";
@@ -343,7 +343,7 @@ function renderLevelBars(){
     const locked=i>current&&!done;
     let pct=done?100:isCur?50:0;
     h+=`<div class="level-row">
-      <span class="level-row-label">Niv. ${i}</span>
+      <span class="level-row-label">Lev. ${i}</span>
       <div class="progress-bar"><div class="progress-fill${locked?" locked":""}" style="width:${pct}%"></div></div>
       <span class="level-row-pct">${done?"✅":isCur?"▶":locked?"🔒":"—"}</span>
     </div>`;
@@ -381,7 +381,7 @@ function renderCameleon(){
     <div class="cam-options">
       ${ex.options.map((opt,i)=>`<button class="cam-btn" id="camBtn${i}" onclick="checkCameleon(${i})">${opt}</button>`).join("")}
     </div>
-    <div style="margin-top:12px;font-size:.85em;color:#718096">Lucas aidé ${helped} fois ✅</div>`;
+    <div style="margin-top:12px;font-size:.85em;color:#718096">Lucas helped ${helped} fois ✅</div>`;
   document.getElementById("camScore").textContent="";
 }
 
@@ -424,7 +424,7 @@ function nextCameleon(){
     const c      = document.getElementById("fichesContent");
 
     if (!errors.length) {
-      c.innerHTML = "<div class='cam-no-errors'>🎉 Aucune erreur enregistrée ! Continue comme ça !</div>";
+      c.innerHTML = "<div class='cam-no-errors'>🎉 No errors recorded! Keep it up!</div>";
       return;
     }
 
@@ -440,15 +440,15 @@ function nextCameleon(){
     const sorted = Object.values(stats).sort((a, b) => b.count - a.count);
 
     /* --- RENDU HTML (Style & Classes conservés) --- */
-    c.innerHTML = `<p style="color:#718096; margin-bottom:14px;">📝 ${sorted.length} notion(s) à réviser :</p>` +
+    c.innerHTML = `<p style="color:#718096; margin-bottom:14px;">📝 ${sorted.length} item(s) to review:</p>` +
       sorted.map(e => `
         <div class="fiche-card" style="${e.count > 1 ? 'border-left: 5px solid var(--error);' : ''}">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
             <div class="fiche-q" style="margin-bottom:0">❓ ${e.question}</div>
-            ${e.count > 1 ? `<span style="background:var(--error); color:white; padding:2px 8px; border-radius:12px; font-size:0.75em; font-weight:bold;">Trompé ${e.count} fois</span>` : ''}
+            ${e.count > 1 ? `<span style="background:var(--error); color:white; padding:2px 8px; border-radius:12px; font-size:0.75em; font-weight:bold;">Wrong ${e.count} fois</span>` : ''}
           </div>
-          <div class="fiche-wrong">✗ Ta dernière réponse : ${e.userAnswer || "—"}</div>
-          <div class="fiche-correct">✓ Bonne réponse : ${e.correctAnswer}</div>
+          <div class="fiche-wrong">✗ Your last answer: ${e.userAnswer || "—"}</div>
+          <div class="fiche-correct">✓ Correct answer: ${e.correctAnswer}</div>
           ${e.explanation ? `<div class="fiche-expl">💡 ${e.explanation}</div>` : ""}
         </div>`
       ).join("");
@@ -460,11 +460,11 @@ document.addEventListener("DOMContentLoaded",()=>{loadPlayerList();});
 function renderNiveaux(){
   const p=currentPlayerData;
   const c=document.getElementById("niveauxGrid");
-  if(!p){c.innerHTML="<div class='cam-no-errors'>Connecte-toi d'abord.</div>";return;}
+  if(!p){c.innerHTML="<div class='cam-no-errors'>Please select a player first.</div>";return;}
   const completed=p.completed||[];
   const current=p.currentLevel||1;
   const activeSession=p.activeSession;
-  const LEVEL_NAMES={1:"Décollage 🚀",2:"Routine 📅",3:"En ce moment 👁️",4:"Questions ❓",5:"Retour ⏪",6:"Aventurier ⚔️",7:"Voyant 🔮",8:"Expériences 🏆",9:"Pouvoirs 🪄",10:"Maîtrise 👑"};
+  const LEVEL_NAMES={1:"Take-off 🚀",2:"Routine 📅",3:"Right now 👁️",4:"Questions ❓",5:"Flashback ⏪",6:"Adventurer ⚔️",7:"Fortune teller 🔮",8:"Experiences 🏆",9:"Powers 🪄",10:"Mastery 👑"};
   let h="";
   for(let i=1;i<=10;i++){
     const done=completed.includes(i);
@@ -494,14 +494,14 @@ function launchLevel(lvl) {
 function renderHistorique(){
   const p=currentPlayerData;
   const c=document.getElementById("historiqueContent");
-  if(!p||!p.sessionHistory||p.sessionHistory.length===0){c.innerHTML="<div class='cam-no-errors'>📭 Aucune session enregistrée.</div>";return;}
+  if(!p||!p.sessionHistory||p.sessionHistory.length===0){c.innerHTML="<div class='cam-no-errors'>📭 No sessions recorded yet.</div>";return;}
   const sessions=p.sessionHistory.slice().reverse();
   c.innerHTML=`<p style="color:#718096">${sessions.length} session(s)</p>`+sessions.map(s=>{
     const d=new Date(s.date);
     const dateStr=d.toLocaleDateString('fr-FR',{day:'numeric',month:'short'});
     const timeStr=d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
     const color=s.passed?"var(--success)":"var(--error)";
-    return `<div class="fiche-card" style="border-left-color:${color}"><div style="display:flex;justify-content:space-between"><span style="font-weight:bold">Niveau ${s.level}</span><span style="font-size:.8em">${dateStr} ${timeStr}</span></div><div style="font-size:.9em"><span style="color:${color};font-weight:bold">${s.passed?"✅ Réussi":"❌ À réviser"}</span> | ${s.correct}/${s.total} (${s.pct}%) | ${s.mode||'mixte'}</div></div>`;
+    return `<div class="fiche-card" style="border-left-color:${color}"><div style="display:flex;justify-content:space-between"><span style="font-weight:bold">Niveau ${s.level}</span><span style="font-size:.8em">${dateStr} ${timeStr}</span></div><div style="font-size:.9em"><span style="color:${color};font-weight:bold">${s.passed?"✅ Passed":"❌ To review"}</span> | ${s.correct}/${s.total} (${s.pct}%) | ${s.mode||'mixte'}</div></div>`;
   }).join("");
 }
 
