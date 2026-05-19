@@ -1,20 +1,155 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="css/base/reset.css">
-<link rel="stylesheet" href="css/base/variables.css">
-<link rel="stylesheet" href="css/base/typography.css">
-<link rel="stylesheet" href="css/base/animations.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Quiz</title>
+  <title>Français Master — Quiz</title>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- BASE -->
+  <!-- ════════════════════════════════════════════════ -->
+
+  <link rel="stylesheet" href="css/base/reset.css">
+  <link rel="stylesheet" href="css/base/variables.css">
+  <link rel="stylesheet" href="css/base/typography.css">
+  <link rel="stylesheet" href="css/base/animations.css">
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- LAYOUT -->
+  <!-- ════════════════════════════════════════════════ -->
+
+  <link rel="stylesheet" href="css/layout/grid.css">
+  <link rel="stylesheet" href="css/layout/containers.css">
+  <link rel="stylesheet" href="css/layout/sections.css">
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- COMPONENTS -->
+  <!-- ════════════════════════════════════════════════ -->
+
+  <link rel="stylesheet" href="css/components/buttons.css">
+  <link rel="stylesheet" href="css/components/cards.css">
+  <link rel="stylesheet" href="css/components/modals.css">
+  <link rel="stylesheet" href="css/components/forms.css">
+  <link rel="stylesheet" href="css/components/progress.css">
+  <link rel="stylesheet" href="css/components/badges.css">
+  <link rel="stylesheet" href="css/components/toast.css">
+  <link rel="stylesheet" href="css/components/tabs.css">
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- PAGE -->
+  <!-- ════════════════════════════════════════════════ -->
+
+  <link rel="stylesheet" href="css/pages/quiz.css">
+
 </head>
+
 <body>
 
-<h1>Quiz</h1>
+  <!--
+  ══════════════════════════════════════════════════════
+  🇫🇷 FRANÇAIS MASTER
+  QUIZ PAGE
+  ══════════════════════════════════════════════════════
+  -->
 
-<script type="module" src="js/config/app-config.js"></script>
+  <!--
+    ⚠️ GARDE ICI TON HTML ACTUEL
+    sections
+    modales
+    niveaux
+    quiz
+    résultats
+    boutons
+    etc.
+  -->
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- PEDAGOGY DATA -->
+  <!-- ════════════════════════════════════════════════ -->
+
+  <script src="js/pedagogy/themes/greetings.js"></script>
+  <script src="js/pedagogy/themes/market.js"></script>
+  <script src="js/pedagogy/themes/garden.js"></script>
+  <script src="js/pedagogy/themes/neighbors.js"></script>
+  <script src="js/pedagogy/themes/preferences.js"></script>
+  <script src="js/pedagogy/themes/shopping.js"></script>
+  <script src="js/pedagogy/themes/outings.js"></script>
+  <script src="js/pedagogy/themes/weather.js"></script>
+  <script src="js/pedagogy/themes/verbs.js"></script>
+  <script src="js/pedagogy/themes/politeness.js"></script>
+
+  <!-- VOCABULARY -->
+
+  <script src="js/pedagogy/vocabulary/core-vocabulary.js"></script>
+  <script src="js/pedagogy/vocabulary/false-friends.js"></script>
+  <script src="js/pedagogy/vocabulary/expressions.js"></script>
+  <script src="js/pedagogy/vocabulary/pronunciation.js"></script>
+  <script src="js/pedagogy/vocabulary/grammar-patterns.js"></script>
+
+  <!-- CHAMELEON -->
+
+  <script src="js/pedagogy/chameleon/english-mistakes.js"></script>
+  <script src="js/pedagogy/chameleon/tense-mistakes.js"></script>
+  <script src="js/pedagogy/chameleon/preposition-mistakes.js"></script>
+  <script src="js/pedagogy/chameleon/pronunciation-mistakes.js"></script>
+
+  <!-- PROGRESSION -->
+
+  <script src="js/pedagogy/progression/levels.js"></script>
+  <script src="js/pedagogy/progression/badges.js"></script>
+  <script src="js/pedagogy/progression/objectives.js"></script>
+  <script src="js/pedagogy/progression/achievements.js"></script>
+
+  <!-- LESSONS -->
+
+  <script src="js/pedagogy/lessons/lesson-templates.js"></script>
+  <script src="js/pedagogy/lessons/lesson-formatting.js"></script>
+  <script src="js/pedagogy/lessons/examples.js"></script>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- ENGINE -->
+  <!-- ════════════════════════════════════════════════ -->
+
+  <script src="js/engine/save-engine.js"></script>
+  <script src="js/engine/player-engine.js"></script>
+  <script src="js/engine/game-engine.js"></script>
+  <script src="js/engine/ui-engine.js"></script>
+  <script src="js/engine/session-engine.js"></script>
+  <script src="js/engine/navigation-engine.js"></script>
+  <script src="js/engine/scoring-engine.js"></script>
+  <script src="js/engine/feedback-engine.js"></script>
+  <script src="js/engine/progression-engine.js"></script>
+  <script src="js/engine/pedagogy-engine.js"></script>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- COMPONENTS -->
+  <!-- ════════════════════════════════════════════════ -->
+
+  <script src="js/components/modal-component.js"></script>
+  <script src="js/components/toast-component.js"></script>
+  <script src="js/components/badge-component.js"></script>
+  <script src="js/components/progress-component.js"></script>
+  <script src="js/components/card-component.js"></script>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- UTILS -->
+  <!-- ════════════════════════════════════════════════ -->
+
+  <script src="js/utils/dom-utils.js"></script>
+  <script src="js/utils/storage-utils.js"></script>
+  <script src="js/utils/string-utils.js"></script>
+  <script src="js/utils/random-utils.js"></script>
+  <script src="js/utils/formatting-utils.js"></script>
+  <script src="js/utils/validation-utils.js"></script>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- PAGE -->
+  <!-- ════════════════════════════════════════════════ -->
+
+  <script src="js/pages/quiz-page.js"></script>
+
 </body>
 </html>
