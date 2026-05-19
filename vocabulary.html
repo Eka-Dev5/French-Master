@@ -1,20 +1,92 @@
-<!doctype html>
-<html lang="fr">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="css/base/reset.css">
-<link rel="stylesheet" href="css/base/variables.css">
-<link rel="stylesheet" href="css/base/typography.css">
-<link rel="stylesheet" href="css/base/animations.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Vocabulary</title>
+  <title>French Master — Vocabulary</title>
+
+  <!-- BASE -->
+  <link rel="stylesheet" href="css/base/reset.css">
+  <link rel="stylesheet" href="css/base/variables.css">
+  <link rel="stylesheet" href="css/base/typography.css">
+
+  <!-- LAYOUT -->
+  <link rel="stylesheet" href="css/layout/containers.css">
+
+  <!-- COMPONENTS -->
+  <link rel="stylesheet" href="css/components/buttons.css">
+  <link rel="stylesheet" href="css/components/cards.css">
+  <link rel="stylesheet" href="css/components/forms.css">
+
+  <!-- PAGE -->
+  <link rel="stylesheet" href="css/pages/vocabulary.css">
+
 </head>
+
 <body>
 
-<h1>Vocabulary</h1>
+<div class="vocabulary-page">
 
-<script type="module" src="js/config/app-config.js"></script>
+    <header class="vocabulary-header">
+
+        <h1>
+            📖 Vocabulary
+        </h1>
+
+        <div class="vocabulary-navigation">
+
+            <a href="index.html" class="nav-button">
+                🏠 Home
+            </a>
+
+            <a href="quiz.html" class="nav-button">
+                🎮 Quiz
+            </a>
+
+            <a href="dashboard.html" class="nav-button">
+                📊 Dashboard
+            </a>
+
+        </div>
+
+    </header>
+
+    <main class="vocabulary-main">
+
+        <section class="search-section">
+
+            <input
+                type="text"
+                id="vocabularySearchInput"
+                placeholder="Search vocabulary..."
+            >
+
+        </section>
+
+        <section id="vocabularyCategories" class="categories-grid"></section>
+
+        <section id="vocabularyResults" class="vocabulary-results"></section>
+
+    </main>
+
+</div>
+
+<!-- CONFIG -->
+<script src="js/config/app-config.js"></script>
+
+<!-- UTILS -->
+<script src="js/utils/dom-utils.js"></script>
+
+<!-- PEDAGOGY -->
+<script src="js/pedagogy/vocabulary/core-vocabulary.js"></script>
+<script src="js/pedagogy/vocabulary/false-friends.js"></script>
+<script src="js/pedagogy/vocabulary/expressions.js"></script>
+<script src="js/pedagogy/vocabulary/pronunciation.js"></script>
+
+<!-- PAGE -->
+<script src="js/pages/vocabulary-page.js"></script>
+
 </body>
 </html>
