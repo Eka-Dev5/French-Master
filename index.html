@@ -4,65 +4,78 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>Français Master</title>
+  <title>French Master</title>
 
-  <!-- BASE CSS -->
+  <!-- =========================================================
+       CSS GLOBAL
+       ========================================================= -->
   <link rel="stylesheet" href="css/base/reset.css">
   <link rel="stylesheet" href="css/base/variables.css">
   <link rel="stylesheet" href="css/base/typography.css">
   <link rel="stylesheet" href="css/base/animations.css">
 
-  <!-- LAYOUT -->
+  <!-- =========================================================
+       LAYOUT
+       ========================================================= -->
   <link rel="stylesheet" href="css/layout/grid.css">
-  <link rel="stylesheet" href="css/layout/containers.css">
   <link rel="stylesheet" href="css/layout/sections.css">
+  <link rel="stylesheet" href="css/layout/containers.css">
 
-  <!-- COMPONENTS -->
+  <!-- =========================================================
+       COMPONENTS
+       ========================================================= -->
   <link rel="stylesheet" href="css/components/buttons.css">
   <link rel="stylesheet" href="css/components/cards.css">
   <link rel="stylesheet" href="css/components/modals.css">
+  <link rel="stylesheet" href="css/components/forms.css">
   <link rel="stylesheet" href="css/components/toast.css">
 
-  <!-- PAGE -->
+  <!-- =========================================================
+       PAGE
+       ========================================================= -->
   <link rel="stylesheet" href="css/pages/index.css">
 </head>
 
 <body>
 
-  <!--
-    ════════════════════════════════════════════════════════
-    🎮 FRANÇAIS MASTER
-    Page d'accueil du jeu
-    ════════════════════════════════════════════════════════
-  -->
-
-  <div id="app">
+  <!-- =========================================================
+       PAGE D'ACCUEIL PRINCIPALE
+       ========================================================= -->
+  <main class="home-page">
 
     <!-- HERO -->
     <section class="hero-section">
 
+      <div class="hero-overlay"></div>
+
       <div class="hero-content">
 
-        <h1>🇫🇷 Français Master 🥖</h1>
+        <div class="hero-logo">
+          🇫🇷
+        </div>
+
+        <h1 class="hero-title">
+          Français Master
+        </h1>
 
         <p class="hero-subtitle">
-          Apprends le français avec un système de progression,
-          des quiz, des badges et des fiches intelligentes.
+          Undestand French and speak when and where you want !.
         </p>
 
-        <div class="hero-buttons">
+        <!-- BOUTONS PRINCIPAUX -->
+        <div class="hero-actions">
 
-          <button onclick="goToQuiz()" class="btn btn-primary">
-            🎮 Commencer
-          </button>
+          <a href="quiz.html" class="main-button primary-button">
+            🎮 Commencer le Quiz
+          </a>
 
-          <button onclick="goToDashboard()" class="btn btn-secondary">
-            📊 Mon Espace
-          </button>
+          <a href="dashboard.html" class="main-button secondary-button">
+            📊 Mon Dashboard
+          </a>
 
-          <button onclick="goToVocabulary()" class="btn btn-secondary">
+          <a href="vocabulary.html" class="main-button tertiary-button">
             📖 Lexique
-          </button>
+          </a>
 
         </div>
 
@@ -70,17 +83,74 @@
 
     </section>
 
-  </div>
+    <!-- FEATURES -->
+    <section class="features-section">
 
-  <!-- CONFIG -->
+      <div class="feature-card">
+        <div class="feature-icon">🧠</div>
+        <h2>Progression intelligente</h2>
+        <p>
+          Débloque les niveaux progressivement
+          selon tes résultats.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📝</div>
+        <h2>Fiches d'erreurs</h2>
+        <p>
+          Révise automatiquement
+          les erreurs que tu fais souvent.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🏅</div>
+        <h2>Badges & objectifs</h2>
+        <p>
+          Gagne des récompenses
+          et suis tes progrès.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🦎</div>
+        <h2>Mode Caméléon</h2>
+        <p>
+          Corrige les erreurs classiques
+          des anglophones.
+        </p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       CONFIGURATION
+       ========================================================= -->
   <script src="js/config/app-config.js"></script>
   <script src="js/config/game-config.js"></script>
   <script src="js/config/pedagogy-config.js"></script>
 
-  <!-- ENGINES -->
+  <!-- =========================================================
+       UTILS
+       ========================================================= -->
+  <script src="js/utils/dom-utils.js"></script>
+  <script src="js/utils/storage-utils.js"></script>
+  <script src="js/utils/string-utils.js"></script>
+  <script src="js/utils/random-utils.js"></script>
+
+  <!-- =========================================================
+       ENGINE
+       ========================================================= -->
+  <script src="js/engine/save-engine.js"></script>
+  <script src="js/engine/player-engine.js"></script>
   <script src="js/engine/navigation-engine.js"></script>
 
-  <!-- PAGE -->
+  <!-- =========================================================
+       PAGE SCRIPT
+       ========================================================= -->
   <script src="js/pages/index-page.js"></script>
 
 </body>
