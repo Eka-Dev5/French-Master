@@ -1,0 +1,4 @@
+// english-mistakes.js
+// French Master
+
+export default {};
