@@ -1,4 +1,5 @@
-// greetings.js
-// French Master
-
-export default {};
+export const greetings = [
+  'Bonjour',
+  'Bonsoir',
+  'Salut'
+];
