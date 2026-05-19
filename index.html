@@ -1,157 +1,287 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>French Master</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- =========================================================
-       CSS GLOBAL
-       ========================================================= -->
-  <link rel="stylesheet" href="css/base/reset.css">
-  <link rel="stylesheet" href="css/base/variables.css">
-  <link rel="stylesheet" href="css/base/typography.css">
-  <link rel="stylesheet" href="css/base/animations.css">
+<title>French Master</title>
 
-  <!-- =========================================================
-       LAYOUT
-       ========================================================= -->
-  <link rel="stylesheet" href="css/layout/grid.css">
-  <link rel="stylesheet" href="css/layout/sections.css">
-  <link rel="stylesheet" href="css/layout/containers.css">
+<!-- BASE -->
+<link rel="stylesheet" href="css/base/reset.css">
+<link rel="stylesheet" href="css/base/variables.css">
+<link rel="stylesheet" href="css/base/typography.css">
+<link rel="stylesheet" href="css/base/animations.css">
 
-  <!-- =========================================================
-       COMPONENTS
-       ========================================================= -->
-  <link rel="stylesheet" href="css/components/buttons.css">
-  <link rel="stylesheet" href="css/components/cards.css">
-  <link rel="stylesheet" href="css/components/modals.css">
-  <link rel="stylesheet" href="css/components/forms.css">
-  <link rel="stylesheet" href="css/components/toast.css">
+<!-- LAYOUT -->
+<link rel="stylesheet" href="css/layout/grid.css">
+<link rel="stylesheet" href="css/layout/sections.css">
+<link rel="stylesheet" href="css/layout/containers.css">
 
-  <!-- =========================================================
-       PAGE
-       ========================================================= -->
-  <link rel="stylesheet" href="css/pages/index.css">
+<!-- COMPONENTS -->
+<link rel="stylesheet" href="css/components/buttons.css">
+<link rel="stylesheet" href="css/components/cards.css">
+<link rel="stylesheet" href="css/components/modals.css">
+<link rel="stylesheet" href="css/components/forms.css">
+<link rel="stylesheet" href="css/components/toast.css">
+
+<!-- PAGE -->
+<link rel="stylesheet" href="css/pages/index.css">
+
 </head>
 
 <body>
 
-  <!-- =========================================================
-       PAGE D'ACCUEIL PRINCIPALE
-       ========================================================= -->
-  <main class="home-page">
+<main class="home-page">
 
-    <!-- HERO -->
-    <section class="hero-section">
+  <!-- LANGUAGE SWITCH -->
+  <div style="position:absolute;top:20px;right:20px;z-index:50">
 
-      <div class="hero-overlay"></div>
+    <button
+      id="languageToggle"
+      class="main-button secondary-button"
+      onclick="toggleLanguage()"
+    >
+      🇫🇷 Voir en français
+    </button>
 
-      <div class="hero-content">
+  </div>
 
-        <div class="hero-logo">
-          🇫🇷
-        </div>
+  <!-- HERO -->
+  <section class="hero-section">
 
-        <h1 class="hero-title">
-          Français Master
-        </h1>
+    <div class="hero-overlay"></div>
 
-        <p class="hero-subtitle">
-          Undestand French and speak when and where you want !.
-        </p>
+    <div class="hero-content">
 
-        <!-- BOUTONS PRINCIPAUX -->
-        <div class="hero-actions">
+      <div class="hero-logo">
+        🇫🇷
+      </div>
 
-          <a href="quiz.html" class="main-button primary-button">
-            🎮 Commencer le Quiz
-          </a>
+      <h1 class="hero-title" id="homeTitle">
+        French Master
+      </h1>
 
-          <a href="dashboard.html" class="main-button secondary-button">
-            📊 Mon Dashboard
-          </a>
+      <p class="hero-subtitle" id="homeSubtitle">
+        Learn French with quizzes,
+        progression, badges,
+        error sheets and interactive lessons.
+      </p>
 
-          <a href="vocabulary.html" class="main-button tertiary-button">
-            📖 Lexique
-          </a>
+      <!-- ACTIONS -->
+      <div class="hero-actions">
 
-        </div>
+        <a
+          href="quiz.html"
+          class="main-button primary-button"
+          id="playButton"
+        >
+          🎮 Start Quiz
+        </a>
+
+        <a
+          href="dashboard.html"
+          class="main-button secondary-button"
+          id="dashboardButton"
+        >
+          📊 Dashboard
+        </a>
+
+        <a
+          href="vocabulary.html"
+          class="main-button tertiary-button"
+          id="vocabularyButton"
+        >
+          📖 Vocabulary
+        </a>
 
       </div>
 
-    </section>
+    </div>
 
-    <!-- FEATURES -->
-    <section class="features-section">
+  </section>
 
-      <div class="feature-card">
-        <div class="feature-icon">🧠</div>
-        <h2>Progression intelligente</h2>
-        <p>
-          Débloque les niveaux progressivement
-          selon tes résultats.
-        </p>
-      </div>
+  <!-- FEATURES -->
+  <section class="features-section">
 
-      <div class="feature-card">
-        <div class="feature-icon">📝</div>
-        <h2>Fiches d'erreurs</h2>
-        <p>
-          Révise automatiquement
-          les erreurs que tu fais souvent.
-        </p>
-      </div>
+    <div class="feature-card">
 
-      <div class="feature-card">
-        <div class="feature-icon">🏅</div>
-        <h2>Badges & objectifs</h2>
-        <p>
-          Gagne des récompenses
-          et suis tes progrès.
-        </p>
-      </div>
+      <div class="feature-icon">🧠</div>
 
-      <div class="feature-card">
-        <div class="feature-icon">🦎</div>
-        <h2>Mode Caméléon</h2>
-        <p>
-          Corrige les erreurs classiques
-          des anglophones.
-        </p>
-      </div>
+      <h2 id="feature1Title">
+        Smart Progression
+      </h2>
 
-    </section>
+      <p id="feature1Text">
+        Unlock levels according
+        to your results.
+      </p>
 
-  </main>
+    </div>
 
-  <!-- =========================================================
-       CONFIGURATION
-       ========================================================= -->
-  <script src="js/config/app-config.js"></script>
-  <script src="js/config/game-config.js"></script>
-  <script src="js/config/pedagogy-config.js"></script>
+    <div class="feature-card">
 
-  <!-- =========================================================
-       UTILS
-       ========================================================= -->
-  <script src="js/utils/dom-utils.js"></script>
-  <script src="js/utils/storage-utils.js"></script>
-  <script src="js/utils/string-utils.js"></script>
-  <script src="js/utils/random-utils.js"></script>
+      <div class="feature-icon">📝</div>
 
-  <!-- =========================================================
-       ENGINE
-       ========================================================= -->
-  <script src="js/engine/save-engine.js"></script>
-  <script src="js/engine/player-engine.js"></script>
-  <script src="js/engine/navigation-engine.js"></script>
+      <h2 id="feature2Title">
+        Error Sheets
+      </h2>
 
-  <!-- =========================================================
-       PAGE SCRIPT
-       ========================================================= -->
-  <script src="js/pages/index-page.js"></script>
+      <p id="feature2Text">
+        Automatically review
+        your recurring mistakes.
+      </p>
+
+    </div>
+
+    <div class="feature-card">
+
+      <div class="feature-icon">🏅</div>
+
+      <h2 id="feature3Title">
+        Badges & Achievements
+      </h2>
+
+      <p id="feature3Text">
+        Earn rewards
+        and track your progress.
+      </p>
+
+    </div>
+
+    <div class="feature-card">
+
+      <div class="feature-icon">🦎</div>
+
+      <h2 id="feature4Title">
+        Chameleon Mode
+      </h2>
+
+      <p id="feature4Text">
+        Correct common mistakes
+        made by English speakers.
+      </p>
+
+    </div>
+
+  </section>
+
+</main>
+
+<!-- CONFIG -->
+<script src="js/config/app-config.js"></script>
+
+<!-- PAGE -->
+<script>
+
+let currentLanguage = "en";
+
+function toggleLanguage(){
+
+  currentLanguage =
+    currentLanguage === "en"
+      ? "fr"
+      : "en";
+
+  if(currentLanguage === "fr"){
+
+    document.documentElement.lang = "fr";
+
+    document.getElementById("languageToggle").textContent =
+      "🇬🇧 See in English";
+
+    document.getElementById("homeTitle").textContent =
+      "Français Master";
+
+    document.getElementById("homeSubtitle").textContent =
+      "Apprends le français avec des quiz, des badges, des fiches et des leçons interactives.";
+
+    document.getElementById("playButton").textContent =
+      "🎮 Commencer";
+
+    document.getElementById("dashboardButton").textContent =
+      "📊 Tableau de bord";
+
+    document.getElementById("vocabularyButton").textContent =
+      "📖 Lexique";
+
+    document.getElementById("feature1Title").textContent =
+      "Progression intelligente";
+
+    document.getElementById("feature1Text").textContent =
+      "Débloque les niveaux selon tes résultats.";
+
+    document.getElementById("feature2Title").textContent =
+      "Fiches d'erreurs";
+
+    document.getElementById("feature2Text").textContent =
+      "Révise automatiquement tes erreurs fréquentes.";
+
+    document.getElementById("feature3Title").textContent =
+      "Badges & Récompenses";
+
+    document.getElementById("feature3Text").textContent =
+      "Gagne des récompenses et suis tes progrès.";
+
+    document.getElementById("feature4Title").textContent =
+      "Mode Caméléon";
+
+    document.getElementById("feature4Text").textContent =
+      "Corrige les erreurs classiques des anglophones.";
+
+  }
+
+  else{
+
+    document.documentElement.lang = "en";
+
+    document.getElementById("languageToggle").textContent =
+      "🇫🇷 Voir en français";
+
+    document.getElementById("homeTitle").textContent =
+      "French Master";
+
+    document.getElementById("homeSubtitle").textContent =
+      "Learn French with quizzes, progression, badges, error sheets and interactive lessons.";
+
+    document.getElementById("playButton").textContent =
+      "🎮 Start Quiz";
+
+    document.getElementById("dashboardButton").textContent =
+      "📊 Dashboard";
+
+    document.getElementById("vocabularyButton").textContent =
+      "📖 Vocabulary";
+
+    document.getElementById("feature1Title").textContent =
+      "Smart Progression";
+
+    document.getElementById("feature1Text").textContent =
+      "Unlock levels according to your results.";
+
+    document.getElementById("feature2Title").textContent =
+      "Error Sheets";
+
+    document.getElementById("feature2Text").textContent =
+      "Automatically review your recurring mistakes.";
+
+    document.getElementById("feature3Title").textContent =
+      "Badges & Achievements";
+
+    document.getElementById("feature3Text").textContent =
+      "Earn rewards and track your progress.";
+
+    document.getElementById("feature4Title").textContent =
+      "Chameleon Mode";
+
+    document.getElementById("feature4Text").textContent =
+      "Correct common mistakes made by English speakers.";
+
+  }
+
+}
+
+</script>
 
 </body>
 </html>
