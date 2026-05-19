@@ -23,73 +23,43 @@
 
 ========================================================= */
 
-const GREETINGS_THEME = {
+"use strict";
 
-    /* =====================================================
-       IDENTITÉ DU THÈME
-    ===================================================== */
+/* ═══════════════════════════════════════════════════════
+   THEME : GREETINGS
+   Level 1
+   Basic greetings and introductions.
+   ═══════════════════════════════════════════════════════ */
+
+const GREETINGS_THEME = {
 
     id: 1,
 
-    slug: "greetings",
+    key: "greetings",
 
-    title: "Salutations 🙋",
+    name: "Greetings",
 
-    description:
-        "Apprendre à saluer, se présenter et utiliser les premières formules essentielles du français.",
-
-    difficulty: "beginner",
+    emoji: "🙋",
 
     color: "#667eea",
-
-
-
-    /* =====================================================
-       OBJECTIFS PÉDAGOGIQUES
-    ===================================================== */
-
-    objectives: [
-
-        "Dire bonjour",
-
-        "Dire au revoir",
-
-        "Se présenter",
-
-        "Demander le nom",
-
-        "Comprendre les salutations courantes",
-
-        "Utiliser les formules de politesse simples"
-
-    ],
-
-
-
-    /* =====================================================
-       LEÇONS
-    ===================================================== */
 
     lessons: [
 
         {
+            id: "greetings-1",
 
-            id: "greetings-lesson-1",
-
-            title: "Dire bonjour",
+            title: "Saying Hello",
 
             introduction:
-                "En français, il existe plusieurs façons de saluer selon le contexte.",
+                "French has formal and informal greetings.",
 
             rules: [
 
-                "Bonjour = salutation standard",
+                "Bonjour = hello (formal/general)",
 
-                "Salut = informel",
+                "Salut = hi (informal)",
 
-                "Bonsoir = utilisé le soir",
-
-                "Bonne nuit = avant de dormir"
+                "Bonsoir = good evening"
 
             ],
 
@@ -103,56 +73,6 @@ const GREETINGS_THEME = {
                 {
                     fr: "Salut Lucas !",
                     en: "Hi Lucas!"
-                },
-
-                {
-                    fr: "Bonsoir Madame.",
-                    en: "Good evening Madam."
-                }
-
-            ],
-
-            warning:
-                "Attention : 'Bonne nuit' ne remplace pas 'Bonsoir'."
-
-        },
-
-
-
-        {
-
-            id: "greetings-lesson-2",
-
-            title: "Se présenter",
-
-            introduction:
-                "Pour se présenter en français, on utilise souvent 'Je m'appelle'.",
-
-            rules: [
-
-                "Je m'appelle = My name is",
-
-                "Moi c'est = informal introduction",
-
-                "Enchanté = nice to meet you"
-
-            ],
-
-            examples: [
-
-                {
-                    fr: "Je m'appelle Emma.",
-                    en: "My name is Emma."
-                },
-
-                {
-                    fr: "Moi c'est Lucas.",
-                    en: "I'm Lucas."
-                },
-
-                {
-                    fr: "Enchanté !",
-                    en: "Nice to meet you!"
                 }
 
             ]
@@ -160,209 +80,85 @@ const GREETINGS_THEME = {
         }
 
     ],
-
-
-
-    /* =====================================================
-       VOCABULAIRE
-    ===================================================== */
 
     vocabulary: [
 
         {
             fr: "bonjour",
             en: "hello",
-            phonetic: "bon-jour",
-            category: "greeting",
-            level: 1
+            pronunciation: "bon-zhoor",
+            category: "greeting"
         },
 
         {
             fr: "salut",
             en: "hi",
-            phonetic: "sa-lu",
-            category: "greeting",
-            level: 1
+            pronunciation: "sa-lu",
+            category: "greeting"
         },
 
         {
             fr: "bonsoir",
             en: "good evening",
-            phonetic: "bon-swar",
-            category: "greeting",
-            level: 1
-        },
-
-        {
-            fr: "au revoir",
-            en: "goodbye",
-            phonetic: "o ruh-vwar",
-            category: "farewell",
-            level: 1
-        },
-
-        {
-            fr: "à bientôt",
-            en: "see you soon",
-            phonetic: "a byen-to",
-            category: "farewell",
-            level: 1
+            pronunciation: "bon-swahr",
+            category: "greeting"
         }
 
     ],
 
-
-
-    /* =====================================================
-       QUESTIONS DE QUIZ
-    ===================================================== */
-
-    quiz: [
+    questions: [
 
         {
-
             id: "greetings-q1",
 
-            q: "Comment dit-on 'hello' en français ?",
+            type: "multiple-choice",
 
-            options: [
+            question:
+                "How do you say 'Hello' in French?",
+
+            answers: [
+
                 "Bonjour",
                 "Merci",
-                "Pomme",
-                "Maison"
+                "Pardon",
+                "Au revoir"
+
             ],
 
-            a: "Bonjour",
+            correctAnswer:
+                "Bonjour",
 
-            expl:
-                "Bonjour est la salutation standard en français.",
-
-            difficulty: "easy"
+            explanation:
+                "Bonjour means Hello."
 
         },
 
-
-
         {
-
             id: "greetings-q2",
 
-            q: "Quelle formule est informelle ?",
+            type: "multiple-choice",
 
-            options: [
+            question:
+                "Which greeting is informal?",
+
+            answers: [
+
                 "Bonsoir",
                 "Salut",
-                "Bonne nuit",
-                "Merci"
+                "Merci",
+                "Excusez-moi"
+
             ],
 
-            a: "Salut",
-
-            expl:
-                "'Salut' est une formule plus familière.",
-
-            difficulty: "easy"
-
-        },
-
-
-
-        {
-
-            id: "greetings-q3",
-
-            q: "Comment se présenter en français ?",
-
-            options: [
-                "Je suis appelé",
-                "Je m'appelle",
-                "Je nomme",
-                "Je parle"
-            ],
-
-            a: "Je m'appelle",
-
-            expl:
-                "'Je m'appelle' est la formule correcte.",
-
-            difficulty: "easy"
-
-        }
-
-    ],
-
-
-
-    /* =====================================================
-       ERREURS FRÉQUENTES
-    ===================================================== */
-
-    commonMistakes: [
-
-        {
-
-            wrong: "Bonne nuit ! (à 18h)",
-
-            correct: "Bonsoir !",
+            correctAnswer:
+                "Salut",
 
             explanation:
-                "Bonne nuit est utilisé avant d’aller dormir."
-
-        },
-
-
-
-        {
-
-            wrong: "Je suis Emma.",
-
-            correct: "Je m'appelle Emma.",
-
-            explanation:
-                "Les deux existent mais 'Je m'appelle' est plus naturel pour se présenter."
-
-        }
-
-    ],
-
-
-
-    /* =====================================================
-       DIALOGUES
-    ===================================================== */
-
-    dialogues: [
-
-        {
-
-            title: "Première rencontre",
-
-            lines: [
-
-                {
-                    speaker: "Lucas",
-                    text: "Bonjour !"
-                },
-
-                {
-                    speaker: "Emma",
-                    text: "Salut !"
-                },
-
-                {
-                    speaker: "Lucas",
-                    text: "Je m'appelle Lucas."
-                },
-
-                {
-                    speaker: "Emma",
-                    text: "Enchantée ! Moi c'est Emma."
-                }
-
-            ]
+                "Salut is informal."
 
         }
 
     ]
 
+};
 };
