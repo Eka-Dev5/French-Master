@@ -1,2 +1,6 @@
-/* variables.css */
-/* French Master */
+:root {
+  --primary-color: #4a90e2;
+  --background-color: #f5f5f5;
+  --text-color: #222;
+  --radius: 12px;
+}
