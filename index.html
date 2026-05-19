@@ -1,20 +1,87 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<link rel="stylesheet" href="css/base/reset.css">
-<link rel="stylesheet" href="css/base/variables.css">
-<link rel="stylesheet" href="css/base/typography.css">
-<link rel="stylesheet" href="css/base/animations.css">
+  <title>Français Master</title>
 
-<title>Index</title>
+  <!-- BASE CSS -->
+  <link rel="stylesheet" href="css/base/reset.css">
+  <link rel="stylesheet" href="css/base/variables.css">
+  <link rel="stylesheet" href="css/base/typography.css">
+  <link rel="stylesheet" href="css/base/animations.css">
+
+  <!-- LAYOUT -->
+  <link rel="stylesheet" href="css/layout/grid.css">
+  <link rel="stylesheet" href="css/layout/containers.css">
+  <link rel="stylesheet" href="css/layout/sections.css">
+
+  <!-- COMPONENTS -->
+  <link rel="stylesheet" href="css/components/buttons.css">
+  <link rel="stylesheet" href="css/components/cards.css">
+  <link rel="stylesheet" href="css/components/modals.css">
+  <link rel="stylesheet" href="css/components/toast.css">
+
+  <!-- PAGE -->
+  <link rel="stylesheet" href="css/pages/index.css">
 </head>
+
 <body>
 
-<h1>Index</h1>
+  <!--
+    ════════════════════════════════════════════════════════
+    🎮 FRANÇAIS MASTER
+    Page d'accueil du jeu
+    ════════════════════════════════════════════════════════
+  -->
 
-<script type="module" src="js/config/app-config.js"></script>
+  <div id="app">
+
+    <!-- HERO -->
+    <section class="hero-section">
+
+      <div class="hero-content">
+
+        <h1>🇫🇷 Français Master 🥖</h1>
+
+        <p class="hero-subtitle">
+          Apprends le français avec un système de progression,
+          des quiz, des badges et des fiches intelligentes.
+        </p>
+
+        <div class="hero-buttons">
+
+          <button onclick="goToQuiz()" class="btn btn-primary">
+            🎮 Commencer
+          </button>
+
+          <button onclick="goToDashboard()" class="btn btn-secondary">
+            📊 Mon Espace
+          </button>
+
+          <button onclick="goToVocabulary()" class="btn btn-secondary">
+            📖 Lexique
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+  <!-- CONFIG -->
+  <script src="js/config/app-config.js"></script>
+  <script src="js/config/game-config.js"></script>
+  <script src="js/config/pedagogy-config.js"></script>
+
+  <!-- ENGINES -->
+  <script src="js/engine/navigation-engine.js"></script>
+
+  <!-- PAGE -->
+  <script src="js/pages/index-page.js"></script>
+
 </body>
 </html>
