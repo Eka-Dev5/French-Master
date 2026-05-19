@@ -1,4 +1,3 @@
-// game-engine.js
-// French Master
-
-export default {};
+export function startGame() {
+  console.log('Game started');
+}

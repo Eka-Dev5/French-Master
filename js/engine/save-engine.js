@@ -1,4 +1,3 @@
-// save-engine.js
-// French Master
-
-export default {};
+export function saveProgress(data) {
+  localStorage.setItem('french-master-save', JSON.stringify(data));
+}
