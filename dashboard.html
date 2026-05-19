@@ -1,20 +1,144 @@
-<!doctype html>
-<html lang="fr">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="css/base/reset.css">
-<link rel="stylesheet" href="css/base/variables.css">
-<link rel="stylesheet" href="css/base/typography.css">
-<link rel="stylesheet" href="css/base/animations.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dashboard</title>
+  <title>French Master — Dashboard</title>
+
+  <!-- BASE -->
+  <link rel="stylesheet" href="css/base/reset.css">
+  <link rel="stylesheet" href="css/base/variables.css">
+  <link rel="stylesheet" href="css/base/typography.css">
+  <link rel="stylesheet" href="css/base/animations.css">
+
+  <!-- LAYOUT -->
+  <link rel="stylesheet" href="css/layout/containers.css">
+  <link rel="stylesheet" href="css/layout/grid.css">
+
+  <!-- COMPONENTS -->
+  <link rel="stylesheet" href="css/components/buttons.css">
+  <link rel="stylesheet" href="css/components/cards.css">
+  <link rel="stylesheet" href="css/components/tabs.css">
+  <link rel="stylesheet" href="css/components/badges.css">
+  <link rel="stylesheet" href="css/components/progress.css">
+
+  <!-- PAGE -->
+  <link rel="stylesheet" href="css/pages/dashboard.css">
+
 </head>
+
 <body>
 
-<h1>Dashboard</h1>
+<div class="dashboard-page">
 
-<script type="module" src="js/config/app-config.js"></script>
+    <header class="dashboard-header">
+
+        <h1>
+            📊 Dashboard
+        </h1>
+
+        <div class="dashboard-navigation">
+
+            <a href="index.html" class="nav-button">
+                🏠 Home
+            </a>
+
+            <a href="quiz.html" class="nav-button">
+                🎮 Quiz
+            </a>
+
+            <a href="vocabulary.html" class="nav-button">
+                📖 Vocabulary
+            </a>
+
+        </div>
+
+    </header>
+
+    <main class="dashboard-main">
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div id="playerLevel" class="stat-number">1</div>
+                <div class="stat-label">Current Level</div>
+            </div>
+
+            <div class="stat-card">
+                <div id="playerScore" class="stat-number">0</div>
+                <div class="stat-label">Score</div>
+            </div>
+
+            <div class="stat-card">
+                <div id="playerAccuracy" class="stat-number">0%</div>
+                <div class="stat-label">Accuracy</div>
+            </div>
+
+            <div class="stat-card">
+                <div id="playerStreak" class="stat-number">0</div>
+                <div class="stat-label">Streak</div>
+            </div>
+
+        </section>
+
+        <section class="dashboard-tabs">
+
+            <div class="tabs-header">
+
+                <button class="tab-button active">
+                    📈 Statistics
+                </button>
+
+                <button class="tab-button">
+                    🏅 Badges
+                </button>
+
+                <button class="tab-button">
+                    📝 Review Sheets
+                </button>
+
+                <button class="tab-button">
+                    🎭 Chameleon
+                </button>
+
+            </div>
+
+            <div class="tabs-content">
+
+                <div id="statisticsTab"></div>
+                <div id="badgesTab"></div>
+                <div id="reviewTab"></div>
+                <div id="chameleonTab"></div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- CONFIG -->
+<script src="js/config/app-config.js"></script>
+
+<!-- UTILS -->
+<script src="js/utils/storage-utils.js"></script>
+<script src="js/utils/dom-utils.js"></script>
+
+<!-- PEDAGOGY -->
+<script src="js/pedagogy/progression/badges.js"></script>
+<script src="js/pedagogy/chameleon/english-mistakes.js"></script>
+
+<!-- ENGINES -->
+<script src="js/engine/save-engine.js"></script>
+<script src="js/engine/player-engine.js"></script>
+<script src="js/engine/progression-engine.js"></script>
+<script src="js/engine/ui-engine.js"></script>
+
+<!-- PAGE -->
+<script src="js/pages/dashboard-page.js"></script>
+
 </body>
 </html>
