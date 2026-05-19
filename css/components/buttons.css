@@ -1,2 +1,6 @@
-/* buttons.css */
-/* French Master */
+.btn {
+  background: var(--primary-color);
+  color: white;
+  border-radius: var(--radius);
+  padding: 10px 16px;
+}
